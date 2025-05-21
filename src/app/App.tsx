@@ -1,35 +1,75 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { FC, useEffect } from "react";
+import { useHabitsStore } from "@entities/habits";
+import { useUserStore } from "@entities/user";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: FC = () => {
+  const user = useUserStore((state) => state.user);
+  const auth = useUserStore((state) => state.auth);
+  const logout = useUserStore((state) => state.logout);
+
+  const habits = useHabitsStore((state) => state.habits);
+  const getHabits = useHabitsStore((state) => state.getHabits);
+  const createHabit = useHabitsStore((state) => state.createHabit);
+
+  useEffect(() => {
+    getHabits();
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        padding: "5rem",
+        width: "50rem",
+      }}
+    >
+      <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
+        <h1>Habit Tracker</h1>
 
-export default App
+        <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+          {user ? (
+            <>
+              <span>{user.username}</span>
+              <button style={{ padding: "0.4rem" }} onClick={() => logout()}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <button
+              style={{ padding: "0.4rem" }}
+              onClick={async () => await auth()}
+            >
+              Login
+            </button>
+          )}
+        </div>
+      </div>
+
+      <main
+        style={{
+          display: "flex",
+          gap: "2rem",
+          flexDirection: "column",
+        }}
+      >
+        <ul>
+          {habits && habits.map((habit, i) => <li key={i}>{habit.title}</li>)}
+        </ul>
+        <button
+          onClick={async () => {
+            await createHabit({
+              title: "New Habit",
+              description: "This is a new habit",
+            });
+          }}
+        >
+          Create Habit
+        </button>
+      </main>
+    </div>
+  );
+};
+
+export default App;

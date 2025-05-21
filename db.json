@@ -1,0 +1,65 @@
+{
+  "auth": {
+    "id": "1",
+    "username": "john_doe",
+    "email": "john@example.com"
+  },
+  "habits": [
+    {
+      "id": "c6b6",
+      "title": "Drink water",
+      "description": "Stay hydrated",
+      "createdAt": "2025-05-20T12:57:58.517Z",
+      "checked": true
+    },
+    {
+      "id": "167e",
+      "title": "Morning walk",
+      "description": "Walk for 30 minutes",
+      "checked": false,
+      "createdAt": "2025-05-20T12:57:58.517Z"
+    },
+    {
+      "id": "5bca",
+      "title": "New Habit",
+      "description": "This is a new habit",
+      "checked": false,
+      "createdAt": "2025-05-21T12:57:58.517Z"
+    },
+    {
+      "id": "dcf5",
+      "title": "New Habit",
+      "description": "This is a new habit",
+      "checked": false,
+      "createdAt": "2025-05-21T12:58:01.070Z"
+    },
+    {
+      "id": "5384",
+      "title": "New Habit",
+      "description": "This is a new habit",
+      "checked": false,
+      "createdAt": "2025-05-21T12:58:03.222Z"
+    },
+    {
+      "id": "7c26",
+      "title": "New Habit",
+      "description": "This is a new habit",
+      "checked": false,
+      "createdAt": "2025-05-21T13:22:54.296Z"
+    },
+    {
+      "id": "c2b3",
+      "title": "New Habit",
+      "description": "This is a new habit",
+      "checked": false,
+      "createdAt": "2025-05-21T13:22:55.058Z"
+    },
+    {
+      "id": "07eb",
+      "title": "New Habit",
+      "description": "This is a new habit",
+      "checked": false,
+      "createdAt": "2025-05-21T13:23:46.614Z"
+    }
+  ]
+}
