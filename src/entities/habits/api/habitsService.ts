@@ -16,13 +16,9 @@ export class HabitsService {
     return resp.data;
   }
 
-  async createHabit({
-    title,
-    description,
-  }: CreateHabitParameters): Promise<HabitResponse> {
+  async createHabit({ title }: CreateHabitParameters): Promise<HabitResponse> {
     const habitPayload = {
       title,
-      description,
       checked: false,
       createdAt: new Date().toISOString(),
     };

@@ -26,12 +26,10 @@ export const useHabitsStore = create<HabitsState>((set, get) => ({
 
   createHabit: async ({
     title,
-    description,
   }: CreateHabitParameters): Promise<IHabit | null> => {
     try {
       const habit = await habitsService.createHabit({
         title,
-        description,
       });
       set({ habits: [...(get().habits || []), habit] });
       return habit;
