@@ -11,10 +11,3 @@ export const StyledWrapperBox = styled(MUIBox)<MUIBoxProps>(() => ({
   gap: "4rem",
   padding: "4rem",
 }));
-
-export const StyledHabitBox = styled(MUIBox)<MUIBoxProps>(() => ({
-  borderRadius: "0.2rem",
-  backgroundColor: "#f8f9fa",
-  boxShadow: "0 0 10px rgba(12, 11, 11, 0.1)",
-  padding: "2rem",
-}));

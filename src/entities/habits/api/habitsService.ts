@@ -1,4 +1,8 @@
-import { CreateHabitParameters, HabitResponse } from "./types";
+import {
+  CreateHabitParameters,
+  EditHabitParameters,
+  HabitResponse,
+} from "./types";
 import { api } from "@shared/api";
 
 export class HabitsService {
@@ -24,6 +28,25 @@ export class HabitsService {
     };
 
     const resp = await api.post<HabitResponse>("/habits", habitPayload);
+    return resp.data;
+  }
+
+  async deleteHabit(id: string): Promise<HabitResponse> {
+    const resp = await api.delete<HabitResponse>(`/habits/${id}`);
+    return resp.data;
+  }
+
+  async editHabit({
+    id,
+    title,
+    checked,
+  }: EditHabitParameters): Promise<HabitResponse> {
+    const habitPayload = {
+      title,
+      checked,
+    };
+
+    const resp = await api.patch<HabitResponse>(`/habits/${id}`, habitPayload);
     return resp.data;
   }
 }

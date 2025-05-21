@@ -8,3 +8,9 @@ export interface HabitResponse {
 export interface CreateHabitParameters {
   title: string;
 }
+
+export interface EditHabitParameters {
+  id: string;
+  title?: string;
+  checked?: boolean;
+}
