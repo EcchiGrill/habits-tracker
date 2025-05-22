@@ -5,7 +5,7 @@ export interface HabitResponse {
   checked: boolean;
 }
 
-export interface CreateHabitParameters {
+export interface AddHabitParameters {
   title: string;
 }
 

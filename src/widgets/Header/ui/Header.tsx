@@ -15,7 +15,7 @@ export const Header: FC = () => {
   return (
     <StyledHeader>
       <NavLink to="/" style={{ textDecoration: "none", color: "inherit" }}>
-        <h1>Habit Tracker</h1>
+        <h1>Habits Tracker</h1>
       </NavLink>
 
       {user && (

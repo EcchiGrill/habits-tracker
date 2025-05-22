@@ -46,7 +46,7 @@ export const Habit: FC<HabitProps> = ({ id, title, checked = false }) => {
         <IconButton
           onClick={async () => {
             await deleteHabit(id);
-            toast.success("Habit deleted successfully!");
+            toast.success("Habit removed successfully!");
           }}
         >
           <DeleteIcon />

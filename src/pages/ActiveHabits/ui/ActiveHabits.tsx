@@ -28,20 +28,20 @@ export const ActiveHabits: FC = () => {
 
   const pageCount = Math.ceil((filteredHabits || []).length / PAGE_ITEMS_COUNT);
   const getHabits = useHabitsStore((state) => state.getHabits);
-  const createHabit = useHabitsStore((state) => state.createHabit);
+  const addHabit = useHabitsStore((state) => state.addHabit);
 
   const submitHandler = async (e: FormEvent) => {
     e.preventDefault();
     if (!title) return toast.error("Please enter a habit title.");
 
     try {
-      await createHabit({
+      await addHabit({
         title,
       });
       setTitle("");
-      toast.success("Habit created successfully!");
+      toast.success("Habit added successfully!");
     } catch (error) {
-      console.error("Error creating habit:", error);
+      console.error("Error adding habit:", error);
     }
   };
 
@@ -68,7 +68,7 @@ export const ActiveHabits: FC = () => {
             value={title}
             onChange={(e) => setTitle(e.currentTarget.value)}
           />
-          <Button type="submit">Create Habit</Button>
+          <Button type="submit">Add Habit</Button>
         </form>
         <div style={{ display: "flex", gap: "2rem", flexDirection: "column" }}>
           {habits?.length ? (

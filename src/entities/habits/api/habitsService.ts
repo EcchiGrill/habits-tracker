@@ -1,5 +1,5 @@
 import {
-  CreateHabitParameters,
+  AddHabitParameters,
   EditHabitParameters,
   HabitResponse,
 } from "./types";
@@ -22,7 +22,7 @@ export class HabitsService {
     });
   }
 
-  async createHabit({ title }: CreateHabitParameters): Promise<HabitResponse> {
+  async addHabit({ title }: AddHabitParameters): Promise<HabitResponse> {
     const habitPayload = {
       title,
       checked: false,

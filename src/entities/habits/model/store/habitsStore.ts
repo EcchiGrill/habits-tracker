@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { HabitsService, IHabit } from "@entities/habits";
 import {
-  CreateHabitParameters,
+  AddHabitParameters,
   EditHabitParameters,
 } from "@entities/habits/api/types";
 
@@ -13,7 +13,7 @@ interface HabitsState {
   getHabitById: (id: string) => IHabit | null;
   deleteHabit: (id: string) => Promise<IHabit | null>;
   editHabit: ({}: EditHabitParameters) => Promise<IHabit | null>;
-  createHabit: ({}: CreateHabitParameters) => Promise<IHabit | null>;
+  addHabit: ({}: AddHabitParameters) => Promise<IHabit | null>;
 }
 
 export const useHabitsStore = create<HabitsState>((set, get) => ({
@@ -31,17 +31,15 @@ export const useHabitsStore = create<HabitsState>((set, get) => ({
     }
   },
 
-  createHabit: async ({
-    title,
-  }: CreateHabitParameters): Promise<IHabit | null> => {
+  addHabit: async ({ title }: AddHabitParameters): Promise<IHabit | null> => {
     try {
-      const habit = await habitsService.createHabit({
+      const habit = await habitsService.addHabit({
         title,
       });
       set({ habits: [habit, ...(get().habits || [])] });
       return habit;
     } catch (error) {
-      console.error("Error creating habit:", error);
+      console.error("Error adding habit:", error);
       return null;
     }
   },
