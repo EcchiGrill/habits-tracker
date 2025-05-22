@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export interface LinkProps {
   to: string;
   children: React.ReactNode;
-  isActive: boolean;
+  isActive?: boolean;
 }
 
 export interface StyledLinkProps {

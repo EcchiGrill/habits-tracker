@@ -25,6 +25,5 @@ export const useUserStore = create<UserState>((set) => ({
 
   logout: (): void => {
     set({ user: null });
-    console.log("User logged out!");
   },
 }));

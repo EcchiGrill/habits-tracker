@@ -21,7 +21,9 @@ export const useHabitsStore = create<HabitsState>((set, get) => ({
   getHabits: async (): Promise<IHabit[] | null> => {
     try {
       const habits = await habitsService.getHabits();
-      set({ habits });
+      set({
+        habits,
+      });
       return habits;
     } catch (error) {
       console.error("Error fetching habits:", error);
@@ -36,7 +38,7 @@ export const useHabitsStore = create<HabitsState>((set, get) => ({
       const habit = await habitsService.createHabit({
         title,
       });
-      set({ habits: [...(get().habits || []), habit] });
+      set({ habits: [habit, ...(get().habits || [])] });
       return habit;
     } catch (error) {
       console.error("Error creating habit:", error);

@@ -17,7 +17,9 @@ export class HabitsService {
 
   async getHabits(): Promise<HabitResponse[]> {
     const resp = await api.get<HabitResponse[]>("/habits");
-    return resp.data;
+    return resp.data.sort((a, b) => {
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    });
   }
 
   async createHabit({ title }: CreateHabitParameters): Promise<HabitResponse> {

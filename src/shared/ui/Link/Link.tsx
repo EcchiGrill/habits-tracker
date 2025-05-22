@@ -18,7 +18,7 @@ const StyledLink = styled(MUILink, {
   },
 }));
 
-export const Link: FC<LinkProps> = ({ to, children, isActive }) => {
+export const Link: FC<LinkProps> = ({ to, children, isActive = false }) => {
   return (
     <StyledLink component={RouterLink} to={to} isActive={isActive}>
       {children}
